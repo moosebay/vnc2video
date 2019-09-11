@@ -10,6 +10,7 @@ import (
 	"runtime/pprof"
 	"syscall"
 	"time"
+
 	vnc "github.com/amitbet/vnc2video"
 	"github.com/amitbet/vnc2video/encoders"
 	"github.com/amitbet/vnc2video/logger"
@@ -35,7 +36,7 @@ func main() {
 	ccfg := &vnc.ClientConfig{
 		SecurityHandlers: []vnc.SecurityHandler{
 			//&vnc.ClientAuthATEN{Username: []byte(os.Args[2]), Password: []byte(os.Args[3])}
-			&vnc.ClientAuthVNC{Password: []byte("12345")},
+			// &vnc.ClientAuthVNC{Password: []byte("")},
 			&vnc.ClientAuthNone{},
 		},
 		DrawCursor:      true,
@@ -67,12 +68,12 @@ func main() {
 	// 	fmt.Println(err)p
 	// 	os.Exit(1)
 	// }
-	//vcodec := &encoders.MJPegImageEncoder{Quality: 60 , Framerate: framerate}
-	//vcodec := &encoders.X264ImageEncoder{FFMpegBinPath: "./ffmpeg", Framerate: framerate}
+	// vcodec := &encoders.MJPegImageEncoder{Quality: 60 , Framerate: framerate}
+	vcodec := &encoders.X264ImageEncoder{FFMpegBinPath: "./ffmpeg.exe", Framerate: framerate}
 	//vcodec := &encoders.HuffYuvImageEncoder{FFMpegBinPath: "./ffmpeg", Framerate: framerate}
-	vcodec := &encoders.QTRLEImageEncoder{FFMpegBinPath: "./ffmpeg", Framerate: framerate}
-	//vcodec := &encoders.VP8ImageEncoder{FFMpegBinPath:"./ffmpeg", Framerate: framerate}
-	//vcodec := &encoders.DV9ImageEncoder{FFMpegBinPath:"./ffmpeg", Framerate: framerate}
+	// vcodec := &encoders.QTRLEImageEncoder{FFMpegBinPath: "./ffmpeg", Framerate: framerate}
+	// vcodec := &encoders.VP8ImageEncoder{FFMpegBinPath: "./ffmpeg", Framerate: framerate}
+	// vcodec := &encoders.DV9ImageEncoder{FFMpegBinPath: "./ffmpeg.exe", Framerate: framerate}
 
 	//counter := 0
 	//vcodec.Init("./output" + strconv.Itoa(counter))
